@@ -1,16 +1,11 @@
 {
   "name": "foodexplorer_backend",
   "version": "1.0.0",
-<<<<<<< HEAD
   "description": "Projeto de conclusão da trilha Explorer da Rocketseat. O back-end será uma API para o delivery restaurante (FoodExplorer).",
-=======
-  "description": "",
->>>>>>> e91712b91e51b1c9f917ea4a09ce6d69908a0d17
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-<<<<<<< HEAD
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dbarretobrito/foodexplorer_backend"
@@ -23,12 +18,5 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-=======
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
->>>>>>> e91712b91e51b1c9f917ea4a09ce6d69908a0d17
   }
 }
