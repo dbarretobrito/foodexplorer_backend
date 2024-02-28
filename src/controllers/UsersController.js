@@ -1,4 +1,4 @@
-class UserController {
+class UsersController {
   create(request, response) {
     const { name, email, password } = request.body;
 
@@ -8,4 +8,4 @@ class UserController {
 }
 
 // Exportando
-module.exports = UserController;
+module.exports = UsersController;
