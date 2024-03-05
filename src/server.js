@@ -2,6 +2,9 @@
 require('express-async-errors');
 const AppError = require('./utils/AppError');
 
+// Importando conexão com banco de dados relacional
+const database = require('./database/sqlite');
+
 // Importando bibliotecas
 const express = require('express');
 
@@ -14,6 +17,9 @@ const app = express();
 // Atribuindo o tipo de dado que será enviado pelo body e as rotas que serão utilizadas
 app.use(express.json());
 app.use(routes);
+
+// Executando o banco de dados
+database();
 
 app.use((error, request, response, next) => {
   // Sabendo se é um error gerado pelo client
