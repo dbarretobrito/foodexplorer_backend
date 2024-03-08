@@ -1,13 +1,13 @@
 // Import do banco de dados.
 const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
+const sqlite = require('sqlite');
 
 // Imports auxiliares
 const path = require('path');
 
 async function sqliteConnection() {
   // Conexão com o DB
-  const database = await open({
+  const database = await sqlite.open({
     filename: path.resolve(__dirname, '..', 'database.db'),
 
     // Comunicação com DB
