@@ -109,6 +109,28 @@ class DishesController {
 
     return response.status(200).json(dishesWithIngredients);
   }
+
+  async update(request, response) {
+    // Capturando as informações passadas peloo body e por params
+    const { title, description, category, image, price, ingredients } =
+      request.body;
+    const { id } = request.params;
+
+    // Adicionando na constante dish o primeiro dado encontrado par ao id passado como params
+    const dish = await knex('dishes').where({ id }).first();
+
+    // Verificação
+    dish.title = title ?? dish.title;
+    dish.description = description ?? dish.description;
+    dish.category = category ?? dish.category;
+    dish.image = image ?? dish.image;
+    dish.price = price ?? dish.price;
+
+    await knex('dishes').where({ id }).update(dish);
+    await knex('dishes').where({ id }).update('updated_at', knex.fn.now());
+
+    return response.json();
+  }
 }
 
 module.exports = DishesController;
