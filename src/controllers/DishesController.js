@@ -7,7 +7,7 @@ class DishesController {
     const { title, description, category, image, price, ingredients } =
       request.body;
 
-    // Conferência se o prato já existe no banco de dados
+    // Conferência se o prato já existe no banco de dados AQUI
     const checkDishAlreadyExistInDatabase = await knex('dishes')
       .where({ title })
       .first();
