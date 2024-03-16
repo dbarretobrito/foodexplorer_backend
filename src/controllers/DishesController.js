@@ -1,10 +1,20 @@
 const knex = require('../database/knex');
+const AppError = require('../utils/AppError');
 
 class DishesController {
   async create(request, response) {
     // Parâmetros enviados pelo body
     const { title, description, category, image, price, ingredients } =
       request.body;
+
+    // Conferência se o prato já existe no banco de dados
+    const checkDishAlreadyExistInDatabase = await knex('dishes')
+      .where({ title })
+      .first();
+
+    if (checkDishAlreadyExistInDatabase) {
+      throw new AppError('Este prato já existe em nossa database');
+    }
 
     // Inserindo o prato e todos os seus dados na tabela dishes
     const insertedDish = await knex('dishes').insert({
