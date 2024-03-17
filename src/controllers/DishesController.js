@@ -139,7 +139,7 @@ class DishesController {
     await knex('dishes').where({ id }).update(dish);
     await knex('dishes').where({ id }).update('updated_at', knex.fn.now());
 
-    return response.json();
+    return response.json.status(202).json('Prato atualizado com sucesso');
   }
 }
 
