@@ -23,7 +23,7 @@ class UsersController {
       throw new AppError('Este e-mail já está em uso');
     }
 
-    const hashedPassword = hash(password, 8);
+    const hashedPassword = await hash(password, 8);
 
     // CRIANDO O USUÁRIO
     // Inserção de dados

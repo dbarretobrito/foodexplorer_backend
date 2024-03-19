@@ -30,7 +30,7 @@ class DishesController {
 
     // Inserindo os ingredients passado no dish na tabela de ingredients
     const ingredientsInsert = ingredients.map(ingredient => ({
-      name: ingredient,
+      title: ingredient,
       dish_id,
     }));
 
@@ -51,7 +51,7 @@ class DishesController {
     // Fazendo a busca dos ingredientes também. Passando a dish_id que é o parâmetro passado pela request e ordenado por ordem alfabética
     const ingredients = await knex('ingredients')
       .where({ dish_id: id })
-      .orderBy('name');
+      .orderBy('title');
 
     // Fazendo o retorno
     return response.status(200).json({
@@ -64,6 +64,8 @@ class DishesController {
     const { id } = request.params;
 
     await knex('dishes').where({ id }).delete();
+
+    await knex('ingredients').whereIn('dish_id', [id]).del();
 
     return response.status(204).json();
   }
