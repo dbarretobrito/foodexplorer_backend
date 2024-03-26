@@ -15,7 +15,7 @@ function ensureAuthenticated(request, response, next) {
   // Caso o token exista, será colocado na posição 1 do array:
   const [, token] = authHeader.split(' ');
 
-  // Verificação se o token é válido
+  // Verificação se o token é válido (é aqui onde pegamos o id do usuário que está dentro do token de autenticação!)
   try {
     const { sub: user_id } = verify(token, authJwtConfig.jwt.secret);
     request.user = {

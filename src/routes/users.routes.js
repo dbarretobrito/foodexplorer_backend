@@ -15,7 +15,7 @@ const usersRoutes = Router();
 // Não é preciso usar mais o '/users' só a '/' já funciona
 // Não é preciso passar (request, response) só o método que tem dentro da controller
 usersRoutes.post('/', usersController.create);
-usersRoutes.put('/:id', usersController.update);
+usersRoutes.put('/', ensureAuthenticated, usersController.update);
 
 // Exportando
 module.exports = usersRoutes;
