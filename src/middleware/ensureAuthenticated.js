@@ -4,7 +4,7 @@ const authJwtConfig = require('../configs/auth');
 
 const AppError = require('../utils/AppError');
 
-function ensureAuthenticated(request, response, next) {
+async function ensureAuthenticated(request, response, next) {
   const authHeader = request.headers.authorization;
 
   // Verificação a existência do token:
