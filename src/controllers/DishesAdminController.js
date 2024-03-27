@@ -73,3 +73,5 @@ class DishesAdminController {
     return response.json.status(202).json('Prato atualizado com sucesso');
   }
 }
+
+module.exports = DishesAdminController;

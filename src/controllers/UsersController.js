@@ -7,7 +7,7 @@ const sqliteConnection = require('../database/sqlite');
 class UsersController {
   async create(request, response) {
     // Parâmetros enviados pelo body
-    const { name, email, password } = request.body;
+    const { name, email, password, isAdmin = false } = request.body;
 
     // Conexão com o banco de dados
     const database = await sqliteConnection();
@@ -28,8 +28,8 @@ class UsersController {
     // CRIANDO O USUÁRIO
     // Inserção de dados
     await database.run(
-      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-      [name, email, hashedPassword]
+      'INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)',
+      [name, email, hashedPassword, isAdmin]
     );
 
     return response.status(201).json();
